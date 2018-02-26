@@ -8,7 +8,7 @@ Currently, I want this to just be a simple static portfolio. I will use vue, so 
 - PostgreSQL (If I do the what I learned/blogs)
 
 # Plans
-- Wireframe website
+- ~~Wireframe website~~
 - Build the canvas like dwitter background
 - Build the boring portfolio part
 - Build a "What I learned today" blogging system

@@ -3,21 +3,83 @@
 <html>
 
     <head>
-        <link rel="stylesheet" src="~/css/boostrap.css" />
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/griz/css/griz.website.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     </head>
 
     <body>
 
-        <div class="container-fluid">
-            <div class="griz-dwitter-container">
-                <canvas id="griz-dwitter"></canvas>
-            </div>
+        <div class="griz-dwitter-container">
+            <canvas id="griz-dwitter"></canvas>
+        </div>
 
+        <div class="griz-container">
+            <div class="left">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 griz-container-menu">
+                            <img src="/img/grizzly_logo.png" class="griz-logo">
+                            <h3 class="griz-name">ENGLISH</h3>
+                            <nav role="navigation" class="griz-nav">
+                                <div class="griz-menuToggle">
+                                    <input type="checkbox" />
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <ul class="griz-menu">
+                                        <li><a>Home</a></li>
+                                        <li><a>About</a></li>
+                                        <li><a>Skills</a></li>
+                                        <li><a>Projects</a></li>
+                                        <li><a>Work History</a></li>
+                                        <li><a>Contact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <ul class="griz-full-menu">
+                                <li><a>Home</a></li>
+                                <li><a>About</a></li>
+                                <li><a>Skills</a></li>
+                                <li><a>Projects</a></li>
+                                <li><a>Work History</a></li>
+                                <li><a>Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-no-padd">
+                            <div style="height: 100vh; overflow:auto">
+                                <h4>Hello</h4>
+                                <div style="margin-top: 10000px">
+                                    <h4>Hello</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript" src="/scripts/vue.js"></script>
+        <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="/scripts/bootstrap.js"></script>
-        <script type="text/javascript" src="/griz/griz.dwitter.js"></script>
+        <script type="text/javascript" src="/griz/js/griz.dwitter.js"></script>
+
+        <script type="text/javascript">
+        
+            function openNav(){
+
+            };
+
+        </script>
+
     </body>
 
 </html>
