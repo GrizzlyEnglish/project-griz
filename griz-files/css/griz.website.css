@@ -1,3 +1,16 @@
+p,label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+}
+
+label {
+    font-weight: bold;
+}
+
+h2,a {
+    font-family: 'Cinzel', serif;
+}
+
 .griz-container {
     position: absolute;
     width: 100%;
@@ -15,6 +28,10 @@
     
 }
 
+.griz-menu{
+    display: none;
+}
+
 .griz-container .left::after {
     content: "";
     background-image: url("/imgs/grizzly_logo.png");
@@ -22,7 +39,7 @@
     background-size: 75%;
     background-position: center; 
     opacity: 0.3;
-    top: -6rem;
+    top: -8rem;
     left: 0;
     bottom: 0;
     right: 0;
@@ -57,6 +74,11 @@
     text-align: center;
 }
 
+.grizlogo > .text{
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+}
+
 .griz-container .border{
     border-right: 2px solid #66023c;
     position: absolute;
@@ -76,7 +98,7 @@
     padding: 25px;
 }
 
-.skill-badge .col-md-12, .col-md-6 {
+.skill-badge > .col-md-12, .skill-badge > .col-md-4 > .col-md-12 {
     text-align: center;
     border: 1px solid rgb(102, 2, 60);
     border: 1px solid rgba(102, 2, 60, 0.1);
@@ -87,9 +109,14 @@
     margin-top: .5em;
 }
 
+.griz-text {
+    resize: vertical;
+    min-height: 125px;
+}
+
 /* Border drawing css */
 
-.link-border {
+.link-border{
     display: inline-block;
     color: #000;
     text-decoration: none;
@@ -98,13 +125,52 @@
 .link-border::after {
     content: '';
     display: block;
-    width: 0;
+    width: 1%;
     height: 2px;
     background: #000;
-    transition: width .3s;
+    visibility: hidden;
+    transition: visibility 0s, width 0.3s linear;
+}
+
+.link-border.left-line::after{
+    float: left;
+}
+
+.link-border.right-line::after{
     float: right;
 }
 
-.link-border:hover::after {
-    width: 150%;
+.link-border:hover::after{
+    visibility: visible;
+    opacity: 1;
+    width: 200%;
+}
+
+
+@media screen and (max-width: 500px) {
+    .griz-container .side.left{
+        display: none;
+    }
+
+    .griz-container .side.right{
+        width: 100%;
+    }
+
+    .griz-menu {
+        display: inline-block;
+        width: 100%;
+        height: 4em;
+        border-bottom: 3px solid #66023c; 
+    }
+
+    .griz-menu .logo{
+        position: absolute;
+        max-width: 5em;
+        height: auto;
+        /* background: white; */
+        border: 3px solid transparent;
+        border-radius: 24px;
+        left: Calc(50% - 2.5em);
+        z-index: 2;
+    }
 }
