@@ -11,9 +11,8 @@
     </head>
 
     <body>
-
-        <div class="griz-container">
-
+        
+        <div id="griz-app" class="griz-container">
             <div class="griz-menu">
                 <img class="griz-menu logo" src="/imgs/grizzly_logo.png"/>
                 <button type="button" class="navbar-toggler">
@@ -48,7 +47,7 @@
                 </div>
             </div>
             <div class="side right">
-                <div class="scrollbody">
+                <div class="scrollbody" onscroll="checkSection(this)">
                     <div class="body">
                         <section>
                             <h2 class="link-border left-line">About Me</h2>
@@ -91,131 +90,15 @@
                             </div>
                         </section>
                         <section>
-                            <h2 class="link-border left-line">Skills</h2>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <div class="col-md-12 text-center">
-                                            <h3>Development</h3>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="row skill-badge">
-                                            <div class="col-md-12">
-                                                <label>Javascript</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Angular</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>VueJS</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Bootstrap</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>C#</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>PostgreSQL</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Java</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>NodeJs</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Express</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>ASP.NET</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>libGDX</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>MonoGame</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <div class="col-md-12 text-center">
-                                            <h3>Software</h3>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="row skill-badge">
-                                            <div class="col-md-12">
-                                                <label>Visual Studio</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>IntelliJ</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Microsoft Office</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Libre Office</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Paint.NET</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Marmoset Hexcells</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <div class="col-md-12 text-center">
-                                            <h3>Personal</h3>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
-                                        <div class="row skill-badge">
-                                            <div class="col-md-12">
-                                                <label>Drive to Learn</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Love for Coding</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Easy going</label>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Communication</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2 class="link-border left-line">Lacking Skills</h2>
+                                    <h2 class="link-border left-line">Skills</h2>
                                 </div>
                             </div>
-                            <div class="row skill-badge">
-                                <div class="col-md-4">
-                                    <div class="col-md-12">
-                                        <label>Design Skills</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-12">
-                                        <label>Networking</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-12">
-                                        <label>Commenting Code</label>
-                                    </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <griz-skill class="griz-skill" v-for="skill in skills" :key="skill.name" 
+                                        v-bind:skill="skill"></griz-skills>
                                 </div>
                             </div>
                         </section>
@@ -357,8 +240,45 @@
         </div>
 
         <script type="text/javascript" src="/scripts/vue.js"></script>
+        <script type="text/javascript" src="/griz/js/components/griz.skill.component.js"></script>
+        <script type="text/javascript" src="/griz/js/griz.app.js"></script>
         <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="/scripts/bootstrap.js"></script>
+
+        <script>
+
+            var yBar;
+
+            document.addEventListener("DOMContentLoaded", function() {
+                yBar = window.innerHeight/2;
+            });
+
+            function checkSection(elem){
+                var scroll = elem.scrollTop;
+                var sections = document.getElementsByTagName('section');
+                for(var i = 0; i < sections.length; i++){
+                    var rect = sections[i].getBoundingClientRect();
+                    if(rect.top < yBar) {
+                        console.log(sections[i].childNodes)
+                        for (var i2 = 0; i2 < sections[i].childNodes.length; i2++) {
+                            if (sections[i].childNodes[i2].className == "left-line") {
+                                sections[i].classList.add('hover');
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            function outputRects(){
+                var arr = document.getElementsByTagName('section');
+                for(var i = 0; i < arr.length; i++){
+                    var rect = arr[i].getBoundingClientRect();
+                    console.log(rect);
+                }
+            }
+        
+        </script>
 
     </body>
 
