@@ -34,13 +34,13 @@ h2,a {
 
 .griz-container .left::after {
     content: "";
-    background-image: url("/imgs/grizzly_logo.png");
+    background-image: url("/imgs/grizzly_logo_v2.jpg");
     background-repeat: no-repeat;
-    background-size: 75%;
+    background-size: 100%;
     background-position: center; 
     opacity: 0.3;
-    top: -8rem;
-    left: 0;
+    top: -6rem;
+    left: -0.5rem;
     bottom: 0;
     right: 0;
     position: absolute;
@@ -70,7 +70,7 @@ h2,a {
 
 .grizlogo{
     position: relative;
-    top: 50%;
+    top: 85%;
     text-align: center;
 }
 
