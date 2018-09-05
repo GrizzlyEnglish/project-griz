@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="~/griz/css/griz.website.css">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel:900|Montserrat|Pacifico" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <div id="griz-app" class="griz-container">
+            <div class="griz-menu">
+                <img class="griz-menu logo" src="~/imgs/grizzly_logo.png"/>
+                <button type="button" class="navbar-toggler">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="side left">
+                <div class="border">
+                    <nav class="griz-nav">
+                        <ul>
+                            <li>
+                                <a class="link-border right-line" href>About</a>
+                            </li>
+                            <li>
+                                <a class="link-border right-line" href>Skills</a>
+                            </li>
+                            <li>
+                                <a class="link-border right-line" href>Projects</a>
+                            </li>
+                            <li>
+                                <a class="link-border right-line" href>Resume</a>
+                            </li>
+                            <li>
+                                <a class="link-border right-line" href>Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="side right">
+                <div class="scrollbody" onscroll="checkSection(this)">
+                    <div class="body">
+                        <section>
+                            <h2 class="link-border left-line">About Me</h2>
+                            <div>
+                                <article>
+                                    <p>
+                                        I never know what to say in these things. I'm just a guy like every other guy.
+                                    I guess the thing that really sets me apart from everyone else? My love for programming.
+                                    Nothing beats putting on some headphones and solving giant problems one step at time, or
+                                    playing a detective and walking through a ton of logic to find that one tiny bug where
+                                    we misattributed an identifier.
+                                    </p>
+                                </article>
+
+                                <article>
+                                    <p>
+                                        I started out as a self taught programmer. I got a job at a mattress store and had many
+                                    hours in the day where I just held the store front waiting for a customer to enter the
+                                    store; so, I picked up programming. What started out as making pong and brick breaker, 
+                                    quickly turned into me fixing a business problem by creating a delivery tracker for
+                                    a small mattress business to keep track of their daily deliveries and customer statisfaction.
+                                    </p>
+                                </article>
+
+                                <article>
+                                    <p>
+                                        I have since returned to the University of Louisville to persue my degree in Computer Information
+                                    Systems, and currently am set to graduate May of 2019. I also obtained a job as a Junior
+                                    Web developer working in .NET.
+                                    </p>
+                                </article>
+
+                                <article>
+                                    <p>
+                                        My plan for the future? Once I graduate I want to move to game development on the side.
+                                    I have many, many projects that are unfished because school work came first, so once
+                                    I finish school I will begin making games again. Maybe I can make something cool.
+                                    </p>
+                                </article>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="link-border left-line">Skills</h2>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <griz-skill class="griz-skill" v-for="skill in skills" :key="skill.name" 
+                                        v-bind:skill="skill"></griz-skills>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="link-border left-line">Projects</h2>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Bowles Mattress Delivery Tracker</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>  
+                                            Built and designed specifically for Bowles Mattress and
+                                            their four locations in the greater Louisville area.
+                                            Helps Bowles keep track of their daily mattress deliveries, making
+                                            sure not to over book their delivery workers; and, keeps ordering
+                                            from their factories in a timely manner much easier. Also,
+                                            customer surveys are tracked to help Bowles get a better understanding
+                                            of their advertising budget.
+
+                                            <span>Built in Java 7, JavaFX, and WebSockets.</span>
+                                            <span>Code available on request.</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>UofL Collection</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>
+                                            A collection of code from the University of Louisville Computer
+                                            Information Sytems 199 and 200. I had already had programming
+                                            experience for three years at the time of these classes, so to
+                                            keep it interesting I tried to think outside of the box.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Project Space</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>A HTML5 space emulator, well, at least trying...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>ngEventScheduler</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>
+                                            An angular 1.x event scheduler, keep track of all the work you have at
+                                            any given time.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Project Pearl</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>
+                                            An android dungeon crawler, similar to crowntakers. Once I finish school
+                                            I plan to return working on this.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="link-border left-line">Contact</h2>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <form>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control" placeholder="First Name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Message</label>
+                                            <textarea class="form-control griz-text" placeholder="Send me a nice message!"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="float-right">
+                                                <button class="btn btn-success">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+
+                        <section>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <h3>Thanks for stopping by!</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="~/js/vue.js"></script>
+        <script type="text/javascript" src="~/griz/js/components/griz.skill.component.js"></script>
+        <script type="text/javascript" src="~/griz/js/griz.app.js"></script>
+        <script type="text/javascript" src="~/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/js/bootstrap.js"></script>
+
+        <script>
+
+            var yBar;
+
+            document.addEventListener("DOMContentLoaded", function() {
+                yBar = window.innerHeight/2;
+            });
+
+            function checkSection(elem){
+                var scroll = elem.scrollTop;
+                var sections = document.getElementsByTagName('section');
+                for(var i = 0; i < sections.length; i++){
+                    var rect = sections[i].getBoundingClientRect();
+                    if(rect.top < yBar) {
+                        console.log(sections[i].childNodes)
+                        for (var i2 = 0; i2 < sections[i].childNodes.length; i2++) {
+                            if (sections[i].childNodes[i2].className == "left-line") {
+                                sections[i].classList.add('hover');
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            function outputRects(){
+                var arr = document.getElementsByTagName('section');
+                for(var i = 0; i < arr.length; i++){
+                    var rect = arr[i].getBoundingClientRect();
+                    console.log(rect);
+                }
+            }
+        
+        </script>
+
+    </body>
+
+</html>
