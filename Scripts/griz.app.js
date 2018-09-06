@@ -113,5 +113,21 @@ var app = new Vue({
                 information: ''
             },
         ],
+        projects: [
+            {
+                name: 'Bowles Mattress Delivery Tracker',
+                lines: [
+                    `Built and designed specifically for Bowles Mattress and
+                    their four locations in the greater Louisville area.
+                    Helps Bowles keep track of their daily mattress deliveries, making
+                    sure not to over book their delivery workers; and, keeps ordering
+                    from their factories in a timely manner much easier. Also,
+                    customer surveys are tracked to help Bowles get a better understanding
+                    of their advertising budget.`,
+                    'Built in Java 7, JavaFX, and WebSockets.',
+                    'Code available on request.'
+                ]
+            }
+        ]
     },
 });

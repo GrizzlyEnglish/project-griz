@@ -20,7 +20,7 @@
                 </button>
             </div>
 
-            <div class="side left">
+            <div id="leftContainer" class="side left">
                 <div class="border">
                     <nav class="griz-nav">
                         <ul>
@@ -106,27 +106,7 @@
                                     <h2 class="link-border left-line">Projects</h2>
                                 </div>
                             </div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Bowles Mattress Delivery Tracker</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p>  
-                                            Built and designed specifically for Bowles Mattress and
-                                            their four locations in the greater Louisville area.
-                                            Helps Bowles keep track of their daily mattress deliveries, making
-                                            sure not to over book their delivery workers; and, keeps ordering
-                                            from their factories in a timely manner much easier. Also,
-                                            customer surveys are tracked to help Bowles get a better understanding
-                                            of their advertising budget.
-
-                                            <span>Built in Java 7, JavaFX, and WebSockets.</span>
-                                            <span>Code available on request.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <griz-project v-for="project in projects" :key="project.name" v-bind:project="project"></griz-project>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -238,6 +218,7 @@
 
         <script type="text/javascript" src="~/js/vue.js"></script>
         <script type="text/javascript" src="~/griz/js/components/griz.skill.component.js"></script>
+        <script type="text/javascript" src="~/griz/js/components/griz.project.component.js"></script>
         <script type="text/javascript" src="~/griz/js/griz.app.js"></script>
         <script type="text/javascript" src="~/js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="~/js/bootstrap.js"></script>
