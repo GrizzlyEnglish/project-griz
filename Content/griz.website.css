@@ -7,8 +7,21 @@ label {
     font-weight: bold;
 }
 
-h2,a {
+h2 {
     font-family: 'Cinzel', serif;
+}
+
+a {
+    color: #66023c;
+    font-family: 'Cinzel', serif;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+a:hover {
+    color: #66023c;
 }
 
 .griz-container {
@@ -34,12 +47,12 @@ h2,a {
 
 .griz-container .left::after {
     content: "";
-    background-image: url("/imgs/grizzly_logo.png");
+    background-image: url("/imgs/grizzly_logo_v3.png");
     background-repeat: no-repeat;
-    background-size: 65%;
+    background-size: 85%;
     background-position: center; 
     opacity: 0.3;
-    top: -6rem;
+    top: -4rem;
     left: -0.5rem;
     bottom: 0;
     right: 0;
@@ -98,6 +111,15 @@ h2,a {
     padding: 25px;
 }
 
+.griz-skill-container {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.griz-tag-btn {
+    width: 100%;
+}
+
 .griz-skill {
     margin-bottom: .275em;
 }
@@ -111,7 +133,7 @@ h2,a {
 }
 
 .griz-skill > .col-md-12 > label {
-    margin-top: 1em; 
+    margin-top: .5em; 
 }
 
 .skill-badge .col-md-12 label{
@@ -164,7 +186,71 @@ h2,a {
     cursor: pointer;
 }
 
+.highlight-hover:hover { 
+    background-color: #efefef;
+}
+
+.clickable > label {
+    cursor: pointer;
+}
+
+.clickable > label:hover {
+    color: #845d0a;
+}
+
+.border-label {
+    border-bottom: 2px solid rgb(102, 2, 40);
+    width: 75%;
+}
+
+.arrow {
+    height: Calc(100% - 60px);
+    border-right: 2px solid rgb(102, 2, 40);
+    width: 50%;
+}
+
+.arrow-label {
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.arrow:before {
+    content: "";
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 7px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    position: absolute;
+    top: 33px;
+    left: Calc(50% - 9px);
+}
+
+.arrow:after {
+    content: "";
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 7px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    bottom: 33px;
+    left: Calc(50% - 9px);
+}
+
+.padd-col {
+    padding: 25px 0;
+}
+
 @media screen and (max-width: 500px) {
+    .griz-container {
+        overflow: hidden;
+    }
+
     .griz-container .side.left{
         display: none;
     }
@@ -182,12 +268,12 @@ h2,a {
 
     .griz-menu .logo{
         position: absolute;
-        max-width: 5em;
+        max-width: 7.25em;
         height: auto;
         /* background: white; */
         border: 3px solid transparent;
         border-radius: 24px;
-        left: Calc(50% - 2.5em);
+        left: Calc(50% - 3.5em);
         z-index: 2;
     }
 }

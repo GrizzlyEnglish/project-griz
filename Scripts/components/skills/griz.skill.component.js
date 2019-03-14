@@ -1,14 +1,13 @@
 Vue.component('griz-skill', {
     props: {
-        skill: Object
+        skill: Object,
+        isVisible: Boolean
     },
     computed: {
-        skillClass: function () {
-            return 'col-md-' + (this.skill.level * 4)
-        }
+        
     },
     template: `
-        <div v-bind:class="skillClass">
+        <div class="row griz-skill" v-if="isVisible">
             <div class="col-md-12">
                 <label>{{skill.name}}</label>
             </div>

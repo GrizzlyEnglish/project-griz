@@ -8,13 +8,14 @@
         <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="~/griz/css/griz.website.css">
         <link href="https://fonts.googleapis.com/css?family=Cinzel:900|Montserrat|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
 
     <body>
         
         <div id="griz-app" class="griz-container">
             <div class="griz-menu">
-                <img class="griz-menu logo" src="~/imgs/grizzly_logo.png"/>
+                <img class="griz-menu logo" src="~/imgs/grizzly_logo_v3.png"/>
                 <button type="button" class="navbar-toggler">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,10 +32,10 @@
                                 <a class="link-border right-line" href>Skills</a>
                             </li>
                             <li>
-                                <a class="link-border right-line" href>Projects</a>
+                                <a class="link-border right-line" href>Resume</a>
                             </li>
                             <li>
-                                <a class="link-border right-line" href>Resume</a>
+                                <a class="link-border right-line" href>Projects</a>
                             </li>
                             <li>
                                 <a class="link-border right-line" href>Contact</a>
@@ -93,10 +94,7 @@
                                 </div>
                             </div>
                             <div class="container-fluid">
-                                <div class="row">
-                                    <griz-skill class="griz-skill" v-for="skill in skills" :key="skill.name" 
-                                        v-bind:skill="skill"></griz-skills>
-                                </div>
+                                <griz-skill-container class="griz-skill" :skills="skills" :tags="tags"></griz-skill-container>
                             </div>
                         </section>
 
@@ -106,58 +104,7 @@
                                     <h2 class="link-border left-line">Projects</h2>
                                 </div>
                             </div>
-                            <griz-project v-for="project in projects" :key="project.name" v-bind:project="project"></griz-project>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>UofL Collection</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p>
-                                            A collection of code from the University of Louisville Computer
-                                            Information Sytems 199 and 200. I had already had programming
-                                            experience for three years at the time of these classes, so to
-                                            keep it interesting I tried to think outside of the box.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Project Space</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p>A HTML5 space emulator, well, at least trying...</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>ngEventScheduler</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p>
-                                            An angular 1.x event scheduler, keep track of all the work you have at
-                                            any given time.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Project Pearl</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <p>
-                                            An android dungeon crawler, similar to crowntakers. Once I finish school
-                                            I plan to return working on this.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <griz-project v-for="(project,index) in projects" :key="index" :project="project"></griz-project>
                         </section>
 
                         <section>
@@ -217,7 +164,9 @@
         </div>
 
         <script type="text/javascript" src="~/js/vue.js"></script>
-        <script type="text/javascript" src="~/griz/js/components/griz.skill.component.js"></script>
+        <script type="text/javascript" src="~/griz/js/components/skills/griz.skill.component.js"></script>
+        <script type="text/javascript" src="~/griz/js/components/skills/griz.skill.tag.component.js"></script>
+        <script type="text/javascript" src="~/griz/js/components/skills/griz.skill.container.component.js"></script>
         <script type="text/javascript" src="~/griz/js/components/griz.project.component.js"></script>
         <script type="text/javascript" src="~/griz/js/griz.app.js"></script>
         <script type="text/javascript" src="~/js/jquery-3.3.1.min.js"></script>
