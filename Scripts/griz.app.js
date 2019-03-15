@@ -5,6 +5,12 @@ const personal = {name: 'Personal', color: 'secondary'};
 const app = {name: 'Applications', color: 'secondary'};
 const other = {name: 'Other', color: 'secondary'};
 
+const levels = [
+    {name: 'Beginner', level: 0},
+    {name: 'Intermediate', level: 1},
+    {name: 'Advanced', level: 2}
+]
+
 const tags = [
     programming,
     game,
@@ -17,128 +23,148 @@ const tags = [
 const skills = [
     {
         name: 'Javascript',
-        level: 3,
+        level: levels[2],
         tag: programming.name
     },
     {
         name: 'Java',
-        level: 2,
+        level: levels[1],
         tag: programming.name
     },
     {
         name: 'Agile',
-        level: 1,
+        level: levels[1],
         tag: other.name
     },
     {
         name: 'PostgreSQL',
-        level: 2,
+        level: levels[2],
         tag: programming.name
     },
     {
         name: '.NET',
-        level: 1,
+        level: levels[1],
         tag: [programming.name, libraries.name]
     },
     {
         name: 'Bootstrap',
-        level: 1,
+        level: levels[2],
         tag: [programming.name, libraries.name]
     },
     {
         name: 'VueJS',
-        level: 2,
+        level: levels[1],
         tag: [programming.name, libraries.name]
     },
     {
         name: 'Node/Express',
-        level: 1,
+        level: levels[1],
         tag: [programming.name, libraries.name]
     },
     {
         name: 'Lua',
-        level: 2,
+        level: levels[0],
         tag: [programming.name, game.name]
     },
     {
         name: 'LibGDX',
-        level: 2,
+        level: levels[2],
         tag: [programming.name, game.name]
     },
     {
         name: 'VS Code',
-        level: 1,
+        level: levels[2],
         tag: app.name
     },
     {
         name: 'Visual Studio',
-        level: 3,
+        level: levels[2],
         tag: app.name
     },
     {
         name: 'IntelliJ',
-        level: 2,
+        level: levels[2],
         tag: app.name
     },
     {
         name: 'Support',
-        level: 1,
+        level: levels[2],
         tag: other.name
     },
     {
         name: 'Microsoft Office',
-        level: 3,
+        level: levels[2],
         tag: app.name
     },
     {
         name: 'Libre Office',
-        level: 2,
+        level: levels[1],
         tag: app.name
     },
     {
         name: 'Entity Framework',
-        level: 1,
+        level: levels[2],
         tag: [programming.name, libraries.name]
     },
     {
         name: 'Easy going',
-        level: 2,
+        level: levels[2],
         tag: personal.name
     },
     {
         name: 'IIS',
-        level: 1,
+        level: levels[1],
         tag: programming.name
     },
     {
         name: 'Love for Coding',
-        level: 3,
+        level: levels[2],
         tag: personal.name
     },
     {
         name: 'Drive to Learn',
-        level: 2,
+        level: levels[2],
         tag: personal.name
     },
     {
         name: 'Communication',
-        level: 1,
+        level: levels[2],
         tag: personal.name
     },
     {
         name: 'Monogame/XNA',
-        level: 3,
+        level: levels[2],
         tag: [programming.name, game.name]
     },
     {
         name: 'Data Structures',
-        level: 3,
+        level: levels[2],
         tag: [programming.name, game.name]
     },
     {
         name: 'Algorithms',
-        level: 3,
+        level: levels[2],
         tag: [programming.name, game.name]
+    },
+    {
+        name: 'Angular 1.x',
+        level: levels[2],
+        tag: [programming.name]
+    },
+    {
+        name: 'Angular',
+        level: levels[0],
+        tag: [programming.name]
+    },
+    {
+        name: 'C#',
+        level: levels[2],
+        tag: [programming.name, game.name]
+    },
+    {
+        name: 'Unity',
+        level: levels[0],
+        tag: [game.name]
     }
 ];
 
@@ -254,6 +280,7 @@ var griz_app = new Vue({
     el: '#griz-app',
     data: {
         tags: tags,
+        levels: levels,
         skills: skills,
         projects: projects
     },
