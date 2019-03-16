@@ -15,7 +15,7 @@
         
         <div id="griz-app" class="griz-container">
             <div class="griz-menu">
-                <img class="griz-menu logo" src="~/imgs/grizzly_logo_v3.png"/>
+                <img class="griz-menu logo" src="~/imgs/griz_4.png"/>
                 <button type="button" class="navbar-toggler">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,19 +26,19 @@
                     <nav class="griz-nav">
                         <ul>
                             <li>
-                                <a class="link-border right-line" href>About</a>
+                                <a class="link-border right-line" href="#about">About</a>
                             </li>
                             <li>
-                                <a class="link-border right-line" href>Skills</a>
+                                <a class="link-border right-line" href="#skills">Skills</a>
                             </li>
                             <li>
-                                <a class="link-border right-line" href>Resume</a>
+                                <a class="link-border right-line" href="#projects">Projects</a>
                             </li>
                             <li>
-                                <a class="link-border right-line" href>Projects</a>
+                                <a class="link-border right-line" href="#contact">Contact</a>
                             </li>
                             <li>
-                                <a class="link-border right-line" href>Contact</a>
+                                <a class="link-border right-line" href="/files/REnglish_Resume_1_27.pdf">Resume</a>
                             </li>
                         </ul>
                     </nav>
@@ -47,47 +47,40 @@
             <div class="side right">
                 <div class="scrollbody" onscroll="checkSection(this)">
                     <div class="body">
-                        <section>
+                        <section class="center-section" name="header">
+                            <div>
+                                <figure class="griz-portfolio">
+                                    <img src="/imgs/profile.jpg" />
+                                </figure>
+                            </div>
+                            <div>
+                                <a href="https://www.github.com/grizzlyenglish">
+                                    <i class="fab fa-github fa-2x"></i>
+                                </a>
+                                <a class="push-left" href="https://www.hackerrank.com/GrizzlyEnglish">
+                                    <i class="fab fa-hackerrank fa-2x"></i>
+                                </a>
+                            </div>
+                        </section>
+                        <section id="about">
                             <h2 class="link-border left-line">About Me</h2>
                             <div>
                                 <article>
                                     <p>
-                                        I never know what to say in these things. I'm just a guy like every other guy.
-                                    I guess the thing that really sets me apart from everyone else? My love for programming.
-                                    Nothing beats putting on some headphones and solving giant problems one step at time, or
-                                    playing a detective and walking through a ton of logic to find that one tiny bug where
-                                    we misattributed an identifier.
+                                        Hello, my name is Ryan English. I am a self-taught programmer, who currently works at CNET as a front
+                                        end developer. I have a serious passion for programming and problem solving. I hope to one day finish
+                                        the game I am developing and transition to a full time game developer; but, until I graduate I have
+                                        very little free time for side projects.
                                     </p>
-                                </article>
 
-                                <article>
                                     <p>
-                                        I started out as a self taught programmer. I got a job at a mattress store and had many
-                                    hours in the day where I just held the store front waiting for a customer to enter the
-                                    store; so, I picked up programming. What started out as making pong and brick breaker, 
-                                    quickly turned into me fixing a business problem by creating a delivery tracker for
-                                    a small mattress business to keep track of their daily deliveries and customer statisfaction.
-                                    </p>
-                                </article>
-
-                                <article>
-                                    <p>
-                                        I have since returned to the University of Louisville to persue my degree in Computer Information
-                                    Systems, and currently am set to graduate May of 2019. I also obtained a job as a Junior
-                                    Web developer working in .NET.
-                                    </p>
-                                </article>
-
-                                <article>
-                                    <p>
-                                        My plan for the future? Once I graduate I want to move to game development on the side.
-                                    I have many, many projects that are unfished because school work came first, so once
-                                    I finish school I will begin making games again. Maybe I can make something cool.
+                                        I am attending the University of Louisville College of Business for my degree in Bachelor of 
+                                        Science in Business Administration (CIS) with a graduation date of May 2019.
                                     </p>
                                 </article>
                             </div>
                         </section>
-                        <section>
+                        <section id="skills">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 class="link-border left-line">Skills</h2>
@@ -98,7 +91,7 @@
                             </div>
                         </section>
 
-                        <section>
+                        <section id="projects">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 class="link-border left-line">Projects</h2>
@@ -107,7 +100,7 @@
                             <griz-project v-for="(project,index) in projects" :key="index" :project="project"></griz-project>
                         </section>
 
-                        <section>
+                        <section id="contact">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 class="link-border left-line">Contact</h2>
