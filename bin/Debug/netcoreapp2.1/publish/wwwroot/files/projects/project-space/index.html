@@ -1,0 +1,356 @@
+<!DOCTYPE>
+
+<html>
+
+    <head>
+
+        <style>
+            .static {
+                position: absolute;
+                bottom: 0;
+                left: 25;
+                font-size: 2rem;
+                color: white;
+            }
+        </style>
+
+    </head>
+
+    <body style="margin: 0;">
+
+        <canvas id="testingCanvas">
+
+        </canvas>
+
+        <div class="static">
+            <label>FPS: <span id="counter"></span></label>
+        </div>
+
+
+        <script>
+
+            class Environment{
+                constructor(w, h) {
+                    this.Width = w;
+                    this.Height = h;
+                    this.SkyBox = {
+                        minX: -100,
+                        minY: -100,
+                        maxX: w + 100,
+                        maxY: h + 100
+                    };
+                    this.centerMass = null;
+                    this.Polarized = false;
+                    this.Particles = this.generateParticles();
+                }
+
+                generateParticles() {
+                    var arr = [];
+                    let w = this.Width;
+                    let h = this.Height;
+                    for(var i = 0; i < 200; i++){
+                        arr.push(new Particle(w,h));
+                    }
+                    return arr;
+                };
+
+                distance(x,y,x2,y2){
+                    return Math.sqrt(Math.pow(x2-x, 2) + Math.pow(y2-y,2));
+                }
+
+                update(){
+                    if(this.centerMass == null) return;
+
+                    var cm = this.centerMass;
+                    this.Particles.forEach(p => {
+                        var dist = this.distance(p.x, p.y, cm.x, cm.y);
+                        if(dist < 200){
+                            p.pullTowards(cm.x, cm.y);
+                        }
+                    });
+                };
+
+                removeParticle(i){
+                    this.Particles = this.Particles.splice(i, 1);
+                }
+
+                addParticle(p){
+                    this.Particles.push(p);
+                };
+
+                rebound(){
+                    let w = this.Width;
+                    let h = this.Height;
+                    this.Particles.forEach(p => {
+                        if(p.r > 2 || p.r < 0) {
+                            p.reset(w,h);
+                        } else {
+                            if(p.x < 0) p.x += w;
+                            else if(p.x > w) p.x -= w;
+
+                            if(p.y < 0) p.y += h;
+                            else if(p.y > h) p.y -= h;
+                        }
+                    });
+                };
+
+            }
+
+            class Body {
+                constructor(maxW, maxH){
+                    this.position = new Coordinates(Math.random() * maxW, Math.random() * maxH);
+                    this.r = this.genRadius();
+                    this.mass = this.r * (1 + Math.random());
+                };
+
+                genRadius() {
+                    return Math.random() > .3 ? (Math.random() + 1) : Math.random() + 1.5;
+                };
+            }
+
+            class Particle extends Body {
+                constructor(w,h) {
+                    super(w,h);
+
+                    this.shadowCounter = 0;
+                    this.alphaDiff = Math.random() * .005;                    
+                    this.alpha = Math.random() * .5;
+                    this.color = this.randomColor();
+                    this.r2 = this.r + 1.5;
+                };
+
+                draw(ctx){
+                    if(this.hasShadaow()){
+                        ctx.beginPath();
+                        ctx.arc(this.position.x, this.position.y, this.r2, 0, 360);
+                        ctx.fillStyle = this.getAlphaStr();
+                        ctx.fill();
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(this.position.x, this.position.y, this.r, 0, 360);
+                    ctx.fillStyle = this.getHexStr();
+                    ctx.fill();
+                };
+
+                randomColor() {
+                    var test = parseInt(Math.random() * 3);
+                    if(test == 0) {
+                        //yellow
+                        return {
+                            r: 255,
+                            b: Math.floor(Math.random() * 255),
+                            g: 255
+                        }
+                    } else if(test == 1){
+                        //blue
+                        return {
+                            r: Math.floor(Math.random() * 255),
+                            b: Math.floor(Math.random() * 255),
+                            g: 0
+                        }
+                    } else {
+                        //red
+                        return {
+                            r: Math.floor(Math.random() * 255),
+                            b: 0,
+                            g: 0
+                        }
+                    }
+                };
+
+                hasShadaow(){
+                    if(this.shadowCounter > 0){
+                        this.shadowCounter--;
+                    } else {
+                        this.shadowCounter = Math.random() < .2 ? 60 : 0;
+                    }
+                    return this.shadowCounter > 0;
+                };
+
+                getHexStr() {
+                    return 'rgba(' + this.color.r + ',' + this.color.g + ',' + this.color.b + ', 1)';
+                };
+
+                getAlphaStr() {
+                    return 'rgba(' + this.color.r + ',' + this.color.g + ',' + this.color.b + ',' + this.alpha + ')';
+                };
+
+                zoom() {
+                    this.r+=.01;
+                };
+
+                move (xDist, yDist) {
+                    this.x += xDist;
+                    this.y += yDist;
+                };
+
+                pullTowards(x2, y2) {
+                    if(this.x > x2) {
+                        this.x--;
+                    } else {
+                        this.x++;
+                    }
+
+                    if(this.y > y2){
+                        this.y--;
+                    } else {
+                        this.y++;
+                    }
+                };
+
+            }
+
+            class Coordinates {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                } 
+            }
+
+            class MouseInput{
+                constructor() {
+                    this.Current = new Coordinates(0,0);
+
+                    this.Previous = new Coordinates(0,0);
+
+                    this.Zoomed = false;
+
+                    this.getZoomed = () => {
+                        var z = this.Zoomed;
+                        this.Zoomed = false;
+                        return z;
+                    };
+
+                    this.setCurrent = (x, y) => {
+                        this.reset();
+                        this.Current.x = x;
+                        this.Current.y = y;
+                    };
+
+                    this.reset = () => this.Previous = new Coordinates(this.Current.x,this.Current.y);;
+
+                    this.getDistance = () => {
+                        return {
+                            x: this.Current.x - this.Previous.x,
+                            y: this.Current.y - this.Previous.y
+                        }
+                    };
+                }
+            }
+
+            var canvas;
+            var grizContext;
+            var mouse = new MouseInput();
+            var environment;
+            var now, then, fps;
+            var step = 1/60;
+
+            document.addEventListener("DOMContentLoaded", function() {
+                environment = new Environment(window.innerWidth, window.innerHeight);
+                buildCanvas('testingCanvas');
+            });
+
+            function buildCanvas(id){
+                canvas = document.getElementById(id);
+                
+                setCanvasSize();  
+
+                grizContext = canvas.getContext('2d');
+
+                grizContext.lineWidth = 1;
+                grizContext.lineCap = "butt";
+                
+                canvas.addEventListener('mouseenter', function (e){
+                    //environment.Polarized = true;
+                });
+
+                canvas.addEventListener('mouseleave', function (e){
+                    //environment.Polarized = false;
+                    //mouse.reset();
+                });
+
+                then = Date.now();
+
+                render();
+            };
+
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                environment.Width = canvas.width;
+                environment.Height = canvas.height;
+            };
+
+            window.addEventListener('resize',setCanvasSize, false);
+    
+            window.requestAnimationFrame = (function() {
+                return window.requestAnimationFrame || 
+                    window.webkitRequestAnimationFrame || 
+                    window.mozRequestAnimationFrame || 
+                    window.oRequestAnimationFrame || 
+                    window.msRequestAni11111mationFrame || 
+                    function(callback) {
+                            return window.setTimeout(callback, 1000 / 60);
+                        };
+            })();
+
+            document.onmousemove = function(e) {
+                let x = canvas.width * (e.pageX / canvas.width);
+                let y = canvas.height * (e.pageY / canvas.height);
+                mouse.setCurrent(x,y);
+            };
+
+            document.onmousedown = function(e) {
+                environment.Polarized = true;
+                environment.centerMass = new Coordinates(mouse.Current.x, mouse.Current.y);
+            };
+
+            document.onmouseup = function(e) {
+                environment.Polarized = false;
+            };
+
+            document.addEventListener('wheel', function(){ 
+                mouse.Zoomed = true;
+            }, true);
+
+            function render(){
+                var delta = (new Date().getTime() - then)/1000;
+
+                now = new Date().getTime();
+                elapsed = now - then;
+
+                var newfps = parseInt(1/delta);
+
+                if(fps != newfps){
+                    fps = newfps;
+                    document.getElementById('counter').innerText = '' + fps;
+                }
+
+                requestAnimationFrame(render);
+
+                update();
+                draw();
+                then = now;
+            };
+
+            function update(){
+                environment.update();
+            };
+
+            function draw(){
+                grizContext.fillStyle = "#000000";
+                grizContext.fillRect(0, 0, environment.Width, environment.Height);
+
+                for(var c = 0; c < environment.Particles.length; c++) {
+                    var p = environment.Particles[c];
+                    p.draw(grizContext);   
+                }
+            };
+
+        </script>
+
+    </body>
+
+</html>
