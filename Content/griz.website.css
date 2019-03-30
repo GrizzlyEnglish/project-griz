@@ -62,9 +62,9 @@ a:hover {
 
 .griz-container .left::after {
     content: "";
-    background-image: url("/imgs/griz_4.png");
+    background-image: url("/imgs/grizz_logo_4v2.png");
     background-repeat: no-repeat;
-    background-size: 85%;
+    background-size: 50%;
     background-position: center; 
     opacity: 0.3;
     top: -4rem;
@@ -265,16 +265,17 @@ a:hover {
         position: absolute;
         max-width: 7.25em;
         height: auto;
-        /* background: white; */
-        border: 3px solid transparent;
+        background: white;
+        border: 3px solid white;
         border-radius: 24px;
-        left: Calc(50% - 4.5em);
+        left: Calc(50% - 4em);
         z-index: 2;
         top: -15px;
-        /* text-align: center; */
         margin: 0 auto;
-        /* display: inline-block; */
         width: 7em;
-        /* padding: 0 25px; */
+    }
+
+    .griz-container .right .body {
+        padding-top: 50px;
     }
 }

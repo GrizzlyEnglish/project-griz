@@ -347,6 +347,14 @@ const projects = [
             {
                 href: '/files/projects/cases/CaseTwo_Appex_REnglish_2_2_2019.pdf',
                 name: 'Appex Case'
+            },
+            {
+                href: '/files/projects/cases/Case_Agrico_REnglish_3_23_2019.pdf',
+                name: 'Agrico Case'
+            },
+            {
+                href: '/files/projects/cases/Case_IRS_REnglish_3_30_2019.pdf',
+                name: 'IRS Case'
             }
         ],
         lines: [
@@ -364,6 +372,7 @@ const projects = [
             }
         ],
         lines: [
+            'Responsive minimum web design',
             'Built in .NET Core with VueJS',
         ]
     }
