@@ -272,7 +272,7 @@ a:hover {
         background: white;
         border: 3px solid white;
         border-radius: 24px;
-        left: Calc(50% - 4em);
+        left: Calc(50% - 3.525em);
         z-index: 2;
         top: -15px;
         margin: 0 auto;
@@ -281,5 +281,9 @@ a:hover {
 
     .griz-container .right .body {
         padding-top: 50px;
+    }
+
+    .linkContainer { 
+        margin-bottom: 25px;
     }
 }
