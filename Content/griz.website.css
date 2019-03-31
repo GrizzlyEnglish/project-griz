@@ -48,12 +48,16 @@ a:hover {
 .griz-container .side {
     float: left;
     position: relative;
-    width: 50%;
+    /* width: 50%; */
     height: 100%;
 }
 
 .griz-container .left{
-    
+    width: 35%;
+}
+
+.griz-container .right{
+    width: 65%;
 }
 
 .griz-menu{
@@ -68,7 +72,7 @@ a:hover {
     background-position: center; 
     opacity: 0.3;
     top: -4rem;
-    left: -0.5rem;
+    left: -4rem;
     bottom: 0;
     right: 0;
     position: absolute;
