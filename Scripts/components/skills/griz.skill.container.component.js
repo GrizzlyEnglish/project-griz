@@ -10,9 +10,6 @@ Vue.component('griz-skill-container', {
             activeLevels: [],
             currentSkills: [],
             skillRows: [],
-            emptySkills: {
-                name: "No active tags"
-            },
             getRows: function (skills) {
                 var skillRows = [];
                 let row_count = 0;
@@ -24,6 +21,7 @@ Vue.component('griz-skill-container', {
                     if (skills[i].isVisible) skillRows[row_count].push(skills[i]);
                     if (skillRows[row_count].length == 3) row_count++;
                 }
+                if (skillRows.length == 1 && skillRows[0].length == 0) skillRows = null;
                 return skillRows;
             },
             updateVisibilty: function (skills, activeTags, activeLevels) {
@@ -59,10 +57,10 @@ Vue.component('griz-skill-container', {
         }
     },
     beforeMount: function () {
-        this.activeTags = this.tags.map(function (t){ return t.name; });
-        this.activeLevels = this.levels.map(function (t){ return t.name; });
-        this.currentSkills = this.skills.map(function (t) { t.isVisible = true; return t;});
-        this.skillRows = this.getRows(this.currentSkills);
+        this.activeTags = [];//this.tags.map(function (t){ return t.name; });
+        this.activeLevels = [];//this.levels.map(function (t){ return t.name; });
+        this.currentSkills = this.skills.map(function (t) { t.isVisible = false; return t;});
+        this.skillRows = [];//1this.getRows(this.currentSkills);
     },
     methods: {
         tagClicked: function (data) {
@@ -97,12 +95,22 @@ Vue.component('griz-skill-container', {
     template: `
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <h4>Skill Level</h4>
+                </div>
+            </div>
+            <div class="row">
                 <griz-skill-tag 
                     v-for="(level,index) in levels" 
                     :key="index" @clickedTag="tagClicked"
                     :type="'level'"
                     :color="level.name"
                     :tag="level.name"></griz-skill-tag>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Skill Category</h4>
+                </div>
             </div>
             <div class="row">
                 <griz-skill-tag 
@@ -112,7 +120,31 @@ Vue.component('griz-skill-container', {
                     :color="'secondary'"
                     :tag="tag.name"></griz-skill-tag>
             </div>
-            <griz-skill :skill="emptySkills" v-if="activeTags.length == 0"></griz-skill>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Skill List</h4>
+                </div>
+            </div>
+            <div class="row" v-if="skillRows == null || skillRows.length == 0">
+                <div class="col-md-12 skill-helper" v-if="activeLevels.length == 0 && activeTags.length == 0">
+                    <p>
+                        Too see my skill set add some tags.
+                    </p>
+                    <p>
+                        You'll need to add at least one level and one category.
+                    </p>
+                </div>
+                <div class="col-md-12 skill-helper" v-if="activeLevels.length > 0 && activeTags.length == 0">
+                    <p>
+                        Now just add some categories!!
+                    </p>
+                </div>
+                <div class="col-md-12 skill-helper" v-if="activeLevels.length == 0 && activeTags.length > 0">
+                    <p>
+                        Now just add some levels!!
+                    </p>
+                </div>
+            </div>
             <div class="row griz-skill-container" v-for="(row,index) in skillRows">
                 <div class="col-md-4" v-for="(skill,index) in row">
                     <griz-skill 

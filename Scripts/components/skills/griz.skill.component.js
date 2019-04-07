@@ -10,7 +10,7 @@ Vue.component('griz-skill', {
             <div class="col-md-12">
                 <div class="row full-height">
                     <div class="col-md-10 offset-1 bordered" :class="skill.level.name">
-                        <label class="skill">{{skill.name}}</label>
+                        <p class="skill">{{skill.name}}</p]>
                     </div>
                 </div>
             </div>

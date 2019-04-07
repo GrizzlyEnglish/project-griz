@@ -6,7 +6,7 @@ Vue.component('griz-skill-tag', {
     },
     data: function () {
         return {
-            isActive: true
+            isActive: false
         }
     },
     beforeMount: function () {

@@ -7,7 +7,7 @@ label {
     font-weight: bold;
 }
 
-h1,h2 {
+h1,h2,h4 {
     font-family: 'Cinzel', serif;
 }
 
@@ -68,7 +68,7 @@ a:hover {
     content: "";
     background-image: url("/imgs/grizz_logo_4v2.png");
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 65%;
     background-position: center; 
     opacity: 0.3;
     top: -4rem;
@@ -132,6 +132,7 @@ a:hover {
 
 .griz-tag-btn {
     width: 100%;
+    border-color: #adadad;
 }
 
 .griz-skill {
@@ -168,12 +169,30 @@ a:hover {
     color: #66023C; 
 }
 
+.btn-Advanced.active {
+    background: #66023C;
+    border: 1px solid rgb(78, 4, 47);
+    color: white;
+}
+
 .btn-Intermediate {
     color: #F15156; 
 }
 
+.btn-Intermediate.active {
+    background: #F15156;
+    border: 1px solid rgb(190, 28, 33);
+    color: white;
+}
+
 .btn-Beginner {
     color: #FFCF99; 
+}
+
+.btn-Beginner.active {
+    background: #FFCF99;
+    border: 1px solid rgb(153, 114, 69);
+    color: white;
 }
 
 .griz-text {
@@ -237,6 +256,14 @@ a:hover {
 .border-label {
     border-bottom: 2px solid rgb(102, 2, 40);
     width: 75%;
+}
+
+.skill-helper {
+    text-align: center;
+    text-align: center;
+    /* border: 1px solid #e5e5e5;   */
+    padding-top: 10px;
+    margin-bottom: 15px;
 }
 
 @media screen and (max-width: 500px) {
