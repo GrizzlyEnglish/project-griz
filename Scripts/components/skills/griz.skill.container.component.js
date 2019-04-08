@@ -96,19 +96,6 @@ Vue.component('griz-skill-container', {
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Skill Level</h4>
-                </div>
-            </div>
-            <div class="row">
-                <griz-skill-tag 
-                    v-for="(level,index) in levels" 
-                    :key="index" @clickedTag="tagClicked"
-                    :type="'level'"
-                    :color="level.name"
-                    :tag="level.name"></griz-skill-tag>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
                     <h4>Skill Category</h4>
                 </div>
             </div>
@@ -122,16 +109,29 @@ Vue.component('griz-skill-container', {
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <h4>Skill Level</h4>
+                </div>
+            </div>
+            <div class="row">
+                <griz-skill-tag 
+                    v-for="(level,index) in levels" 
+                    :key="index" @clickedTag="tagClicked"
+                    :type="'level'"
+                    :color="level.name"
+                    :tag="level.name"></griz-skill-tag>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <h4>Skill List</h4>
                 </div>
             </div>
             <div class="row" v-if="skillRows == null || skillRows.length == 0">
                 <div class="col-md-12 skill-helper" v-if="activeLevels.length == 0 && activeTags.length == 0">
                     <p>
-                        Too see my skill set add some tags.
+                        To see my skill set add some tags.
                     </p>
                     <p>
-                        You'll need to add at least one level and one category.
+                        Add at least one <strong>level</strong> and one <strong>category</strong>.
                     </p>
                 </div>
                 <div class="col-md-12 skill-helper" v-if="activeLevels.length > 0 && activeTags.length == 0">

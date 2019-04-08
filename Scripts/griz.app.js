@@ -246,7 +246,7 @@ const projects = [
     {
         name: 'Project Omnihex',
         lines: [
-            `My passion project. Project Pearl is a rogue-like tactical role playing game. 
+            `My passion project. Project Omnihex is a rogue-like tactical role playing game. 
             Every hundred years, Thayne is awoken, and the leader of the Warriors Guild is tasked
             to return him to his slumber. Gather a party and embark on the quest to return Thayne
             to his slumber.`,
